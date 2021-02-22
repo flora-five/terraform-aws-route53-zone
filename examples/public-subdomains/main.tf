@@ -17,10 +17,12 @@ module "aws_route53zone" {
     {
       name           = "example.com",
       delegation_set = "root-zones",
+      tags           = null,
     },
     {
       name           = "example.org",
       delegation_set = null,
+      tags           = null,
     },
   ]
 
@@ -33,6 +35,7 @@ module "aws_route53zone" {
       ns_ttl         = 30,
       ns_list        = [],
       delegation_set = null,
+      tags           = null,
     },
     {
       name           = "private.example.org",
@@ -40,6 +43,7 @@ module "aws_route53zone" {
       ns_ttl         = 30,
       ns_list        = ["1.1.1.1", "2.2.2.2", "3.3.3.3", "4.4.4.4"],
       delegation_set = null,
+      tags           = null,
     },
   ]
 }

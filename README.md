@@ -44,10 +44,14 @@ module "public_zone" {
     {
       name           = "example.com",
       delegation_set = "root-zone",
+      tags           = {
+        Tag1 = "My zone specific tag",
+      }
     },
     {
       name           = "example.org",
       delegation_set = null,
+      tags           = null,
     },
   ]
 
@@ -62,6 +66,7 @@ module "public_zone" {
       ns_ttl         = 30,
       ns_list        = [],
       delegation_set = null,
+      tags           = null,
     },
     {
       name           = "private.example.org",
@@ -69,6 +74,7 @@ module "public_zone" {
       ns_ttl         = 30,
       ns_list        = ["1.1.1.1", "2.2.2.2", "3.3.3.3", "4.4.4.4"],
       delegation_set = "sub-zone",
+      tags           = null,
     },
   ]
 
@@ -79,10 +85,12 @@ module "public_zone" {
     {
       name     = "private.loc",
       vpc_ids  = [],
+      tags     = null,
     },
     {
       name     = "private.local",
       vpc_ids  = [{"id": "vpc-xxxxxxxxxx", "region": "eu-central-1"}],
+      tags     = null,
     },
   ]
 

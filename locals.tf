@@ -34,6 +34,7 @@ locals {
       name       = zone.name
       deleg_id   = zone.delegation_set != null ? aws_route53_delegation_set.delegation_sets[zone.delegation_set]["id"] : null
       deleg_name = zone.delegation_set
+      tags       = zone.tags != null ? zone.tags : {}
     }
   }
 }
@@ -98,6 +99,7 @@ locals {
       parent     = zone.parent
       deleg_id   = zone.delegation_set != null ? aws_route53_delegation_set.delegation_sets[zone.delegation_set]["id"] : null
       deleg_name = zone.delegation_set
+      tags       = zone.tags != null ? zone.tags : {}
     }
   }
   public_delegated_secondary_ns_records = {
@@ -143,6 +145,7 @@ locals {
     for zone in var.private_root_zones : zone.name => {
       name    = zone.name
       vpc_ids = zone.vpc_ids
+      tags    = zone.tags != null ? zone.tags : {}
     }
   }
 }

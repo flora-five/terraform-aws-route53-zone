@@ -19,10 +19,12 @@ module "aws_route53zone" {
     {
       name     = "private.loc",
       vpc_ids  = [],
+      tags     = null,
     },
     {
       name     = "private.local",
       vpc_ids  = [{"id": "vpc-xxxxxxxxxx", "region": "eu-central-1"}],
+      tags     = null,
     },
   ]
 

@@ -23,7 +23,8 @@ resource "aws_route53_zone" "public_root_zones" {
     map("Name", each.value.name),
     map("DelegationSetId", each.value.deleg_id),
     map("DelegationSetName", each.value.deleg_name),
-    var.tags
+    var.tags,
+    each.value.tags
   )
 
   depends_on = [aws_route53_delegation_set.delegation_sets]
@@ -46,7 +47,8 @@ resource "aws_route53_zone" "public_delegated_secondary_zones" {
     map("Parent", each.value.parent),
     map("DelegationSetId", each.value.deleg_id),
     map("DelegationSetName", each.value.deleg_name),
-    var.tags
+    var.tags,
+    each.value.tags
   )
 
   depends_on = [aws_route53_zone.public_root_zones]
@@ -90,7 +92,8 @@ resource "aws_route53_zone" "private_root_zones" {
 
   tags = merge(
     map("Name", each.value.name),
-    var.tags
+    var.tags,
+    each.value.tags
   )
 
   depends_on = [data.aws_vpc.default, data.aws_region.current]

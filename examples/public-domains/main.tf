@@ -17,10 +17,12 @@ module "aws_route53zone" {
     {
       name           = "example.com",
       delegation_set = null,
+      tags           = null,
     },
     {
       name           = "example.org",
       delegation_set = null,
+      tags           = null,
     },
   ]
 
